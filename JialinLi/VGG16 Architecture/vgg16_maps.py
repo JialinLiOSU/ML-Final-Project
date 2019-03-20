@@ -1,4 +1,3 @@
-
 import numpy as np
 import os
 import time
@@ -75,30 +74,39 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_
 #########################################################################################
 # Custom_vgg_model_1
 #Training the classifier alone
-image_input = Input(shape=(224, 224, 3))
+batch_size=32 
+epochs_list=[20,40,60,80,100]
+for epochs in epochs_list:
+	image_input = Input(shape=(224, 224, 3))
 
-model = VGG16(input_tensor=image_input, include_top=True,weights='imagenet')
-model.summary()
-last_layer = model.get_layer('fc2').output
-#x= Flatten(name='flatten')(last_layer)
-out = Dense(num_classes, activation='softmax', name='output')(last_layer)
-custom_vgg_model = Model(image_input, out)
-custom_vgg_model.summary()
+	model = VGG16(input_tensor=image_input, include_top=True,weights='imagenet')
+	model.summary()
+	last_layer = model.get_layer('fc2').output
+	#x= Flatten(name='flatten')(last_layer)
+	out = Dense(num_classes, activation='softmax', name='output')(last_layer)
+	custom_vgg_model = Model(image_input, out)
+	custom_vgg_model.summary()
 
-for layer in custom_vgg_model.layers[:-1]:
-	layer.trainable = False
+	for layer in custom_vgg_model.layers[:-1]:
+		layer.trainable = False
 
-print(custom_vgg_model.layers[3].trainable)
+	print(custom_vgg_model.layers[3].trainable)
 
-custom_vgg_model.compile(loss='categorical_crossentropy',optimizer='rmsprop',metrics=['accuracy'])
+	custom_vgg_model.compile(loss='categorical_crossentropy',optimizer='rmsprop',metrics=['accuracy'])
 
+	t=time.time()
+	#	t = now()
+	hist = custom_vgg_model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(X_test, y_test))
+	print('Training time: %s' % (time.time()-t))
+	(loss, accuracy) = custom_vgg_model.evaluate(X_test, y_test, batch_size=10, verbose=1)
 
-t=time.time()
-#	t = now()
-hist = custom_vgg_model.fit(X_train, y_train, batch_size=32, epochs=12, verbose=1, validation_data=(X_test, y_test))
-print('Training time: %s' % (t - time.time()))
-(loss, accuracy) = custom_vgg_model.evaluate(X_test, y_test, batch_size=10, verbose=1)
+	print()
 
-print("[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100))
-
-
+	str1="Batch_size: "+str(batch_size)+' epochs: '+str(epochs)+'\n'
+	str2="[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100)+'\n'
+		
+	filename='Experiment results_pretrained'+'.txt'
+	file = open(filename,'a')
+	file.write(str1) 
+	file.write(str2)
+	file.close() 
