@@ -1,6 +1,12 @@
-Region Classification
-hist = custom_vgg_model.fit(X_train, y_train, batch_size=32, epochs=12, verbose=1, validation_data=(X_test, y_test))
 
-Training time: -734.5639898777008
-80/80 [==============================] - 13s 160ms/step
-[INFO] loss=0.4692, accuracy: 88.7500%
+Batch_size: 32 epochs: 20
+[INFO] loss=0.6989, accuracy: 87.5000%
+Training time: 1193.925316810608Batch_size: 32 epochs: 40
+[INFO] loss=0.5705, accuracy: 87.5000%
+Training time: 2415.3966727256775Batch_size: 32 epochs: 60
+[INFO] loss=0.6956, accuracy: 90.0000%
+Training time: 3590.4963212013245Batch_size: 32 epochs: 80
+[INFO] loss=0.9050, accuracy: 85.0000%
+Training time: 4785.872489690781Batch_size: 32 epochs: 100
+[INFO] loss=0.8455, accuracy: 90.0000%
+Training time: 6061.584914445877

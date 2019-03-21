@@ -24,7 +24,7 @@ print('Input image shape:', x.shape)
 # Loading the training data
 PATH = os.getcwd()
 # Define data path
-data_path = PATH + '/maps for classification of regions'
+data_path = PATH + '/maps for classification of projections'
 data_dir_list = os.listdir(data_path)
 
 img_data_list=[]
@@ -55,11 +55,12 @@ print (img_data.shape)
 num_classes = 4
 num_of_samples = img_data.shape[0]
 labels = np.ones((num_of_samples,),dtype='int64')
+num_img_each=40
 
-labels[0:100]=0
-labels[100:200]=1
-labels[200:300]=2
-labels[300:400]=3
+labels[0:num_img_each]=0
+labels[num_img_each:num_img_each*2]=1
+labels[num_img_each*2:num_img_each*3]=2
+labels[num_img_each*3:num_img_each*4]=3
 
 names = ['china','south_korea','us','world']
 
@@ -69,7 +70,7 @@ Y = np_utils.to_categorical(labels, num_classes)
 #Shuffle the dataset
 x,y = shuffle(img_data,Y, random_state=2)
 # Split the dataset
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=2)
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_state=2)
 
 #########################################################################################
 # Custom_vgg_model_1
@@ -104,9 +105,11 @@ for epochs in epochs_list:
 
 	str1="Batch_size: "+str(batch_size)+' epochs: '+str(epochs)+'\n'
 	str2="[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100)+'\n'
+	str3='Training time: ' + str (time.time()-t)
 		
-	filename='Experiment results_pretrained'+'.txt'
+	filename='Experiment results_pretrained_projection'+'.txt'
 	file = open(filename,'a')
 	file.write(str1) 
 	file.write(str2)
+	file.write(str3)
 	file.close() 
