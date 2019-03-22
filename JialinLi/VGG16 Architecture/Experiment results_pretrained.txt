@@ -10,3 +10,21 @@ Training time: 3590.4963212013245Batch_size: 32 epochs: 80
 Training time: 4785.872489690781Batch_size: 32 epochs: 100
 [INFO] loss=0.8455, accuracy: 90.0000%
 Training time: 6061.584914445877
+
+last_layer = model.get_layer('block5_pool').output
+x= Flatten(name='flatten')(last_layer)
+x = Dense(128, activation='relu', name='fc1')(x)
+x = Dense(128, activation='relu', name='fc2')(x)
+out = Dense(num_classes, activation='softmax', name='output')(x)
+
+Batch_size: 32 epochs: 20
+[INFO] loss=0.4874, accuracy: 95.0000%
+Training time: 1189.2797923088074Batch_size: 32 epochs: 40
+[INFO] loss=0.5902, accuracy: 92.5000%
+Training time: 2373.60866189003Batch_size: 32 epochs: 60
+[INFO] loss=0.0001, accuracy: 100.0000%
+Training time: 3588.3396973609924Batch_size: 32 epochs: 80
+[INFO] loss=0.0000, accuracy: 100.0000%
+Training time: 4809.08182144165Batch_size: 32 epochs: 100
+[INFO] loss=4.0295, accuracy: 75.0000%
+Training time: 5873.26944732666

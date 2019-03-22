@@ -55,7 +55,7 @@ print (img_data.shape)
 num_classes = 4
 num_of_samples = img_data.shape[0]
 labels = np.ones((num_of_samples,),dtype='int64')
-num_img_each=40
+num_img_each=100
 
 labels[0:num_img_each]=0
 labels[num_img_each:num_img_each*2]=1
@@ -72,44 +72,43 @@ x,y = shuffle(img_data,Y, random_state=2)
 # Split the dataset
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_state=2)
 
-#########################################################################################
-# Custom_vgg_model_1
-#Training the classifier alone
+####################################################################################################################
+
+#Training the feature extraction also
 batch_size=32 
-epochs_list=[20,40,60,80,100]
+epochs_list=[100]
+
 for epochs in epochs_list:
-	image_input = Input(shape=(224, 224, 3))
+    image_input = Input(shape=(224, 224, 3))
+    model = VGG16(input_tensor=image_input, include_top=True,weights='imagenet')
+    model.summary()
 
-	model = VGG16(input_tensor=image_input, include_top=True,weights='imagenet')
-	model.summary()
-	last_layer = model.get_layer('fc2').output
-	#x= Flatten(name='flatten')(last_layer)
-	out = Dense(num_classes, activation='softmax', name='output')(last_layer)
-	custom_vgg_model = Model(image_input, out)
-	custom_vgg_model.summary()
+    last_layer = model.get_layer('block5_pool').output
+    x= Flatten(name='flatten')(last_layer)
+    x = Dense(128, activation='relu', name='fc1')(x)
+    x = Dense(128, activation='relu', name='fc2')(x)
+    out = Dense(num_classes, activation='softmax', name='output')(x)
+    custom_vgg_model2 = Model(image_input, out)
 
-	for layer in custom_vgg_model.layers[:-1]:
-		layer.trainable = False
+    # freeze all the layers except the dense layers
+    for layer in custom_vgg_model2.layers[:-3]:
+        layer.trainable = False
 
-	print(custom_vgg_model.layers[3].trainable)
+    custom_vgg_model2.compile(loss='categorical_crossentropy',optimizer='adadelta',metrics=['accuracy'])
 
-	custom_vgg_model.compile(loss='categorical_crossentropy',optimizer='rmsprop',metrics=['accuracy'])
+    t=time.time()
+    #	t = now()
+    hist = custom_vgg_model2.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(X_test, y_test))
+    print('Training time: %s' % (time.time()-t))
+    (loss, accuracy) = custom_vgg_model2.evaluate(X_test, y_test, batch_size=10, verbose=1)
 
-	t=time.time()
-	#	t = now()
-	hist = custom_vgg_model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(X_test, y_test))
-	print('Training time: %s' % (time.time()-t))
-	(loss, accuracy) = custom_vgg_model.evaluate(X_test, y_test, batch_size=10, verbose=1)
-
-	print()
-
-	str1="Batch_size: "+str(batch_size)+' epochs: '+str(epochs)+'\n'
-	str2="[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100)+'\n'
-	str3='Training time: ' + str (time.time()-t)
-		
-	filename='Experiment results_pretrained'+'.txt'
-	file = open(filename,'a')
-	file.write(str1) 
-	file.write(str2)
-	file.write(str3)
-	file.close() 
+    print()
+    str1="Batch_size: "+str(batch_size)+' epochs: '+str(epochs)+'\n'
+    str2="[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100)+'\n'
+    str3='Training time: ' + str (time.time()-t)+'\n'
+    filename='Experiment results_pretrained'+'.txt'
+    file = open(filename,'a')
+    file.write(str1) 
+    file.write(str2)
+    file.write(str3)
+    file.close()
