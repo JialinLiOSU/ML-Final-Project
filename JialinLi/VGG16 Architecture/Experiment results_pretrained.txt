@@ -43,3 +43,18 @@ Training time: 4809.08182144165
 Batch_size: 32 epochs: 100
 [INFO] loss=4.0295, accuracy: 75.0000%
 Training time: 5873.26944732666
+Batch_size: 32 epochs: 20
+[INFO] loss=0.4030, accuracy: 97.5000%
+Training time: 1178.554514169693
+Batch_size: 32 epochs: 40
+[INFO] loss=6.8502, accuracy: 57.5000%
+Training time: 2351.3331668376923
+Batch_size: 32 epochs: 60
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 3519.1072936058044
+Batch_size: 32 epochs: 80
+[INFO] loss=0.7248, accuracy: 95.0000%
+Training time: 4707.335140943527
+Batch_size: 32 epochs: 100
+[INFO] loss=6.0443, accuracy: 62.5000%
+Training time: 5979.433037281036

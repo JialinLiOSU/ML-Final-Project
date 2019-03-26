@@ -91,7 +91,7 @@ for epochs in epochs_list:
     custom_vgg_model2 = Model(image_input, out)
 
     # freeze all the layers except the dense layers
-    for layer in custom_vgg_model2.layers[:-4]:
+    for layer in custom_vgg_model2.layers[:-5]:
         layer.trainable = False
 
     custom_vgg_model2.compile(loss='categorical_crossentropy',optimizer='adadelta',metrics=['accuracy'])
