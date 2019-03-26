@@ -76,7 +76,7 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_
 
 #Training the feature extraction also
 batch_size=32 
-epochs_list=[100]
+epochs_list=[20,40,60,80,100]
 
 for epochs in epochs_list:
     image_input = Input(shape=(224, 224, 3))
@@ -91,7 +91,7 @@ for epochs in epochs_list:
     custom_vgg_model2 = Model(image_input, out)
 
     # freeze all the layers except the dense layers
-    for layer in custom_vgg_model2.layers[:-3]:
+    for layer in custom_vgg_model2.layers[:-4]:
         layer.trainable = False
 
     custom_vgg_model2.compile(loss='categorical_crossentropy',optimizer='adadelta',metrics=['accuracy'])
