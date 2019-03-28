@@ -75,9 +75,9 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_
 ####################################################################################################################
 
 #Training the feature extraction also
-batch_size=32 
+batch_size=16 
 epochs_list=[20,40,60,80,100]
-layer_inx_list=[-5,-6,-7,-8,-9,-10]
+layer_inx_list=[-3,-4,-5,-6,-7,-8,-9,-10]
 for layer_inx in layer_inx_list:
     for epochs in epochs_list:
         image_input = Input(shape=(224, 224, 3))
@@ -107,7 +107,7 @@ for layer_inx in layer_inx_list:
         str1="Batch_size: "+str(batch_size)+' epochs: '+str(epochs)+'\n'
         str2="[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100)+'\n'
         str3='Training time: ' + str (time.time()-t)+'\n'
-        filename='Experiment results_pretrained'+'.txt'
+        filename='Experiment results_pretrained_projection'+'.txt'
         file = open(filename,'a')
         file.write(str1) 
         file.write(str2)
