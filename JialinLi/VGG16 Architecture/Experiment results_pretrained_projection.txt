@@ -1,3 +1,11 @@
+model = VGG16(input_tensor=image_input, include_top=True,weights='imagenet')
+model.summary()
+last_layer = model.get_layer('fc2').output
+#x= Flatten(name='flatten')(last_layer)
+out = Dense(num_classes, activation='softmax', name='output')(last_layer)
+custom_vgg_model = Model(image_input, out)
+custom_vgg_model.summary()
+
 Batch_size: 32 epochs: 20
 [INFO] loss=1.2335, accuracy: 56.2500%
 Training time: 489.64068603515625Batch_size: 32 epochs: 40
