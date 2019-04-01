@@ -1,0 +1,6 @@
+model_checkpoint_path: "/home/qge2/workspace/data/out/googlenet/cifar/inception-cifar-epoch-99"
+all_model_checkpoint_paths: "/home/qge2/workspace/data/out/googlenet/cifar/inception-cifar-epoch-95"
+all_model_checkpoint_paths: "/home/qge2/workspace/data/out/googlenet/cifar/inception-cifar-epoch-96"
+all_model_checkpoint_paths: "/home/qge2/workspace/data/out/googlenet/cifar/inception-cifar-epoch-97"
+all_model_checkpoint_paths: "/home/qge2/workspace/data/out/googlenet/cifar/inception-cifar-epoch-98"
+all_model_checkpoint_paths: "/home/qge2/workspace/data/out/googlenet/cifar/inception-cifar-epoch-99"
