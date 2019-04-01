@@ -110,7 +110,7 @@ for layer_inx in layer_inx_list:
         str1="Batch_size: "+str(batch_size)+' epochs: '+str(epochs)+'\n'
         str2="[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100)+'\n'
         str3='Training time: ' + str (time.time()-t)+'\n'
-        filename='Experiment results_pretrained1'+'.txt'
+        filename='Experiment results_pretrained1_SGD'+'.txt'
         file = open(filename,'a')
         file.write(str1) 
         file.write(str2)
