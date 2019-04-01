@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import time
+import keras
 from vgg16 import VGG16
 from keras.preprocessing import image
 from keras.applications.imagenet_utils import preprocess_input
@@ -75,7 +76,7 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_
 ####################################################################################################################
 
 #Training the feature extraction also
-batch_size=8
+batch_size=16
 epochs_list=[20,40,60,80,100]
 layer_inx_list=[-3,-4,-5,-6,-7,-8,-9,-10]
 for layer_inx in layer_inx_list:
@@ -95,7 +96,9 @@ for layer_inx in layer_inx_list:
         for layer in custom_vgg_model2.layers[:layer_inx]:
             layer.trainable = False
 
-        custom_vgg_model2.compile(loss='categorical_crossentropy',optimizer='adadelta',metrics=['accuracy'])
+        custom_vgg_model2.compile(loss=keras.losses.categorical_crossentropy,
+                    optimizer=keras.optimizers.SGD(lr=0.01),
+                    metrics=['accuracy'])
 
         t=time.time()
         #	t = now()
