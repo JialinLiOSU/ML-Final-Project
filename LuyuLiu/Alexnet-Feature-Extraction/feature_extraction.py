@@ -5,7 +5,7 @@ import pandas as pd
 from scipy.misc import imread
 from alexnet import AlexNet
 
-sign_names = pd.read_csv('signnames.csv')
+sign_names = pd.read_csv('D:\\Luyu\\ML_map\\ML-Final-Project\\LuyuLiu\\Alexnet-Feature-Extraction\\signnames.csv')
 nb_classes = 43
 
 x = tf.placeholder(tf.float32, (None, 32, 32, 3))
@@ -18,7 +18,8 @@ fc7 = AlexNet(resized, feature_extract=True)
 # the traffic signs. Assign the result of the softmax activation to `probs` below.
 # HINT: Look at the final layer definition in alexnet.py to get an idea of what this
 # should look like.
-shape = (fc7.get_shape().as_list()[-1], nb_classes)  # use this shape for the weight matrix
+# use this shape for the weight matrix
+shape = (fc7.get_shape().as_list()[-1], nb_classes)
 fc8W = tf.Variable(tf.truncated_normal(shape, mean=0.0, stddev=0.1))
 fc8b = tf.Variable(tf.zeros(nb_classes))
 #probs = tf.add(tf.matmul(fc7, fc8W), fc8b)
@@ -45,7 +46,8 @@ for input_im_ind in range(output.shape[0]):
     inds = np.argsort(output)[input_im_ind, :]
     print("Image", input_im_ind)
     for i in range(5):
-        print("%s: %.3f" % (sign_names.ix[inds[-1 - i]][1], output[input_im_ind, inds[-1 - i]]))
+        print("%s: %.3f" % (
+            sign_names.ix[inds[-1 - i]][1], output[input_im_ind, inds[-1 - i]]))
     print()
 
 print("Time: %.3f seconds" % (time.time() - t))
