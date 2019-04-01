@@ -1,9 +1,0 @@
-last_layer = model.get_layer('block5_pool').output
-        x= Flatten(name='flatten')(last_layer)
-        x = Dense(128, activation='relu', name='fc1')(x)
-        x = Dense(128, activation='relu', name='fc2')(x)
-        out = Dense(num_classes, activation='softmax', name='output')(x)
-        custom_vgg_model2 = Model(image_input, out)
-layer_inx_list=[-3,-4,-5,-6,-7,-8,-9,-10]
-for layer in custom_vgg_model2.layers[:layer_inx]:
-            layer.trainable = False
