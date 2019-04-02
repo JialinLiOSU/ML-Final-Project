@@ -13,72 +13,55 @@ from keras.layers.core import Flatten, Dense, Dropout
 from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
 from keras.optimizers import SGD
 import cv2, numpy as np
-from keras.layers import Activation
+from keras.layers import Activation, Conv2D
 from keras.layers import Input
 from keras.layers import merge
 from keras.models import Model
 from keras.optimizers import SGD
 from scipy.misc import imread
 from scipy.misc import imresize
+from keras.utils import plot_model 
 
-def VGG_19(weights_path=None):
-    model = Sequential()
-    model.add(ZeroPadding2D((1,1),input_shape=(224,224,3)))
-    model.add(Convolution2D(64, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(64, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
+def VGG_19(weights_path=None, input_tensor=None):
+    img_input = input_tensor
+# Block 1
+    x = Conv2D(64, (3, 3), activation='relu', padding='same', name='block1_conv1')(img_input)
+    x = Conv2D(64, (3, 3), activation='relu', padding='same', name='block1_conv2')(x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='block1_pool')(x)
 
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(128, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(128, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
+    # Block 2
+    x = Conv2D(128, (3, 3), activation='relu', padding='same', name='block2_conv1')(x)
+    x = Conv2D(128, (3, 3), activation='relu', padding='same', name='block2_conv2')(x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='block2_pool')(x)
 
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(256, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(256, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(256, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(256, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
+    # Block 3
+    x = Conv2D(256, (3, 3), activation='relu', padding='same', name='block3_conv1')(x)
+    x = Conv2D(256, (3, 3), activation='relu', padding='same', name='block3_conv2')(x)
+    x = Conv2D(256, (3, 3), activation='relu', padding='same', name='block3_conv3')(x)
+    x = Conv2D(256, (3, 3), activation='relu', padding='same', name='block3_conv4')(x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='block3_pool')(x)
 
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
+    # Block 4
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv1')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv2')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv3')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv4')(x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='block4_pool')(x)
 
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu'))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation='relu', name='last_layer'))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
+    # Block 5
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv1')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv2')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv3')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv4')(x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='last_layer')(x)
 
-    model.add(Flatten())
-    model.add(Dense(4096, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(4096, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(1000, activation='softmax'))
 
-    if weights_path:
-        model.load_weights(weights_path)
+    return Model(img_input, x, name='vgg19')
 
-    return model
+
 
 base_location = "D:/Luyu/ML_map"
-data_location = base_location + "/vgg19_weights_tf_dim_ordering_tf_kernels.h5"
+data_location = base_location + "/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5"
 project_location = "D:/Luyu/ML_map/ML-Final-Project"
 img_path = project_location+'/JialinLi/VGG16 Architecture/cat.jpg'
 img = image.load_img(img_path, target_size=(224, 224))
@@ -147,7 +130,10 @@ layer_inx_list=[-3,-4,-5,-6,-7,-8,-9,-10]
 for layer_inx in layer_inx_list:
     for epochs in epochs_list:
         image_input = Input(shape=(224, 224, 3))
-        model = VGG_19(weights_path=data_location )
+        model = VGG_19(weights_path=data_location, input_tensor=image_input)
+        
+        model.load_weights(data_location)
+        plot_model(model, to_file=base_location + '/model.png')
         model.summary()
 
         last_layer = model.get_layer('last_layer').output
@@ -175,7 +161,7 @@ for layer_inx in layer_inx_list:
         str1="Batch_size: "+str(batch_size)+' epochs: '+str(epochs)+'\n'
         str2="[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100)+'\n'
         str3='Training time: ' + str (time.time()-t)+'\n'
-        filename='Experiment results_pretrained1_SGD'+'.txt'
+        filename='results_pretrained1_SGD'+'.txt'
         file = open(filename,'a')
         file.write(str1) 
         file.write(str2)
