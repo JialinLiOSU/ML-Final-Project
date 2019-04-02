@@ -4,19 +4,21 @@ import time
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
 # from alexnet import AlexNet
+import keras
+from PIL import Image
 
+
+base_location = "I:\\OSU\\SP19\\ML\\ML-Final-Project"
+data_location = ""
 
 nb_classes = 43
 EPOCHS = 10
 BATCH_SIZE = 128
 
 # TODO: Load traffic signs data.
-training_file = 'D:\\Luyu\\ML_map\\ML-Final-Project\\LuyuLiu\\Alexnet-Feature-Extraction\\train.p'
+training_file = base_location + '\\LuyuLiu\\Alexnet-Feature-Extraction\\train.p'
 with open(training_file, mode='rb') as f:
     data = pickle.load(f)
-
-
-
 
 
 # TODO: Split data into training and validation sets.
@@ -25,7 +27,7 @@ X_train, X_val, y_train, y_val = train_test_split(
 
 print(X_train.shape, X_val.shape, y_train.shape)
 
-path='C:\\Users\\li.7957\\Desktop\\Dropbox\\Dissertation Materials\\Images for training\\maps for classification of regions\\'
+path=base_location + '\\JialinLi\\VGG16 Architecture\\maps for classification of regions\\'
 path_source1=path+'world maps\\'
 path_source2=path+'China maps\\'
 path_source3=path+'South Korea maps\\'
@@ -93,96 +95,7 @@ for num in num_list:
         pixel_values=list(img.getdata())
         data_pair.append(pixel_values)
 
-    data_pair_3=[]
-    for i in range(num_total):
-        pixel_value_list=[]
-        for j in range(num_pixels):
-            # print("j:",j)
-            pixels=data_pair[i][j]
-            try:
-                pixel_value_list.append(pixels[0])
-                pixel_value_list.append(pixels[1])
-                pixel_value_list.append(pixels[2])
-            except:
-                print("i:",i)
-                break
-        if i<num_map_region:
-            # print(len(pixel_value_list))
-            data_pair_3.append(pixel_value_list+[0]+[i])
-        elif i>=num_map_region and i < num_map_region*2:
-            # print(len(pixel_value_list))
-            data_pair_3.append(pixel_value_list+[1]+[i])
-        elif i>=num_map_region*2 and i < num_map_region*3:
-            # print(len(pixel_value_list))
-            data_pair_3.append(pixel_value_list+[2]+[i])
-        elif i>=num_map_region*3 and i < num_map_region*4:
-            # print(len(pixel_value_list))
-            data_pair_3.append(pixel_value_list+[3]+[i])
-
-    len_x=len(data_pair_3[0])-2
-    inx_y=len_x+1
-    inx_image=inx_y+1
-    # Shuffle data_pair as input of Neural Network
-    # random.seed(42)
-    test_loss_list=[]
-    test_acc_list=[]
-    train_time_list=[]
-    test_time_list=[]
-
-    for inx in range(10):
-        model = Sequential()
-        model.add(Conv2D(32, kernel_size=(5, 5), strides=(1, 1),
-                        activation='relu',
-                        input_shape=input_shape))
-        model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-        model.add(Conv2D(64, (5, 5), activation='relu'))
-        model.add(MaxPooling2D(pool_size=(2, 2)))
-        model.add(Flatten())
-        model.add(Dense(1000, activation='relu'))
-        model.add(Dense(num_classes, activation='softmax'))
-
-        model.compile(loss=keras.losses.categorical_crossentropy,
-                    optimizer=keras.optimizers.SGD(lr=0.01),
-                    metrics=['accuracy'])
-        X_batches=[]
-        y_batches=[]
-        print("sets of experiments",inx)
-        random.shuffle(data_pair_3)
-        data_pair=np.array(data_pair_3)
-
-        index_image_list=[]
-        for i in range(num_total-num_test,num_total):
-            index_image_list.append(data_pair_3[i][inx_image-1]+1)
-
-        X_batches_255=[data_pair_3[i][0:len_x] for i in range(num_total)]  
-    
-        y_batches=[data_pair_3[i][len_x] for i in range(num_total)]
-        # data get from last step is with the total value of pixel 255 
-
-        for i in range(num_total):
-            X_1img=[X_batches_255[i][j]/255.0 for j in range(len_x)]
-            X_batches.append(X_1img)
-        X_batches=np.array(X_batches)
-        y_batches=np.array(y_batches)
-
-        x_train=X_batches[0:num_train].reshape(num_train,input_size)
-        x_test=X_batches[num_train:num_total].reshape(num_test,input_size)
-        y_train=y_batches[0:num_train].reshape(num_train,1)
-        y_test=y_batches[num_train:num_total].reshape(num_test,1)
-        
-        x_train = x_train.reshape(x_train.shape[0], width, height, 3)
-        x_test = x_test.reshape(x_test.shape[0], width, height, 3)
-
-        y_train = keras.utils.to_categorical(y_train, num_classes)
-        y_test = keras.utils.to_categorical(y_test, num_classes)
-
-
-
-
-
-
-
-
+    print(len(data_pair))
 
 
 
