@@ -77,10 +77,10 @@ def VGG_19(weights_path=None):
 
     return model
 
-
-data_location = "I:\\OSU\\SP19\\ML"
-base_location = "I:\\OSU\\SP19\\ML\\ML-Final-Project"
-img_path = base_location+'\\JialinLi\\VGG16 Architecture\\cat.jpg'
+base_location = "D:/Luyu/ML_map"
+data_location = base_location + "/vgg19_weights_tf_dim_ordering_tf_kernels.h5"
+project_location = "D:/Luyu/ML_map/ML-Final-Project"
+img_path = project_location+'/JialinLi/VGG16 Architecture/cat.jpg'
 img = image.load_img(img_path, target_size=(224, 224))
 x = image.img_to_array(img)
 print (x.shape)
@@ -90,7 +90,7 @@ x = preprocess_input(x)
 print('Input image shape:', x.shape)
 
 # Loading the training data
-PATH = base_location + '\\JialinLi\\VGG16 Architecture\\maps for classification of regions\\'
+PATH = project_location + '/JialinLi/VGG16 Architecture/maps for classification of regions'
 # Define data path
 data_path = PATH
 data_dir_list = os.listdir(data_path)
@@ -147,7 +147,7 @@ layer_inx_list=[-3,-4,-5,-6,-7,-8,-9,-10]
 for layer_inx in layer_inx_list:
     for epochs in epochs_list:
         image_input = Input(shape=(224, 224, 3))
-        model = VGG_19(weights_path=data_location + "\\vgg19_weights_tf_dim_ordering_tf_kernels.h5")
+        model = VGG_19(weights_path=data_location )
         model.summary()
 
         last_layer = model.get_layer('last_layer').output
