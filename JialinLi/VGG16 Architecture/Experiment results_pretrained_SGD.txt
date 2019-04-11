@@ -1,0 +1,144 @@
+batch_size=16 
+epochs_list=[20,40,60,80,100]
+layer_inx_list=[-3,-4,-5,-6,-7,-8,-9,-10]
+for layer_inx in layer_inx_list:
+    for epochs in epochs_list:
+        image_input = Input(shape=(224, 224, 3))
+        model = VGG16(input_tensor=image_input, include_top=True,weights='imagenet')
+        model.summary()
+
+        last_layer = model.get_layer('block5_pool').output
+        x= Flatten(name='flatten')(last_layer)
+        x = Dense(128, activation='relu', name='fc1')(x)
+        x = Dense(128, activation='relu', name='fc2')(x)
+        out = Dense(num_classes, activation='softmax', name='output')(x)
+        custom_vgg_model2 = Model(image_input, out)
+
+        # freeze all the layers except the dense layers
+        for layer in custom_vgg_model2.layers[:layer_inx]:
+            layer.trainable = False
+
+        custom_vgg_model2.compile(loss=keras.losses.categorical_crossentropy,
+                    optimizer=keras.optimizers.SGD(lr=0.01),
+                    metrics=['accuracy'])
+
+Batch_size: 32 epochs: 20
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 1184.3890306949615
+Batch_size: 32 epochs: 40
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 2343.9243264198303
+Batch_size: 32 epochs: 60
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 3509.5081012248993
+Batch_size: 32 epochs: 80
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 4727.418737888336
+Batch_size: 32 epochs: 100
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 5856.097989797592
+Batch_size: 32 epochs: 20
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 1176.1319212913513
+Batch_size: 32 epochs: 40
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 2350.0485548973083
+Batch_size: 32 epochs: 60
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 3515.8919138908386
+Batch_size: 32 epochs: 80
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 4749.448569536209
+Batch_size: 32 epochs: 100
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 5971.3090443611145
+Batch_size: 32 epochs: 20
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 1192.7813189029694
+Batch_size: 32 epochs: 40
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 2369.589246749878
+Batch_size: 32 epochs: 60
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 3510.589521884918
+Batch_size: 32 epochs: 80
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 4677.124824285507
+Batch_size: 32 epochs: 100
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 5850.495724439621
+Batch_size: 32 epochs: 20
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 1213.7936282157898
+Batch_size: 32 epochs: 40
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 2421.902488231659
+Batch_size: 32 epochs: 60
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 3626.8109583854675
+Batch_size: 32 epochs: 80
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 4840.3930633068085
+Batch_size: 32 epochs: 100
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 6039.941429615021
+Batch_size: 32 epochs: 20
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 1283.444120645523
+Batch_size: 32 epochs: 40
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 2561.492591381073
+Batch_size: 32 epochs: 60
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 3867.9800000190735
+Batch_size: 32 epochs: 80
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 5124.850744724274
+Batch_size: 32 epochs: 100
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 6397.255568027496
+Batch_size: 32 epochs: 20
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 1356.0009677410126
+Batch_size: 32 epochs: 40
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 2708.749041557312
+Batch_size: 32 epochs: 60
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 4052.7162952423096
+Batch_size: 32 epochs: 80
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 5410.45324587822
+Batch_size: 32 epochs: 100
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 6765.407970905304
+Batch_size: 32 epochs: 20
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 1356.4414393901825
+Batch_size: 32 epochs: 40
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 2706.2203447818756
+Batch_size: 32 epochs: 60
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 4060.1109206676483
+Batch_size: 32 epochs: 80
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 5412.80028295517
+Batch_size: 32 epochs: 100
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 6770.466899633408
+Batch_size: 32 epochs: 20
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 1540.9145250320435
+Batch_size: 32 epochs: 40
+[INFO] loss=10.0738, accuracy: 37.5000%
+Training time: 3038.027928352356
+Batch_size: 32 epochs: 60
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 4558.321733951569
+Batch_size: 32 epochs: 80
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 6068.906282424927
+Batch_size: 32 epochs: 100
+[INFO] loss=12.4915, accuracy: 22.5000%
+Training time: 7595.641094207764
