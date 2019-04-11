@@ -25,7 +25,7 @@ print('Input image shape:', x.shape)
 # Loading the training data
 PATH = os.getcwd()
 # Define data path
-data_path = PATH + '/maps for classification of regions'
+data_path = 'C:/Users/li.7957/Desktop/Images for training/maps for classification of regions'
 data_dir_list = os.listdir(data_path)
 
 img_data_list=[]
@@ -59,10 +59,17 @@ layer_inx_list=[-3,-4,-5,-6,-7,-8,-9,-10]
 
 # Define the number of classes
 num_classes = 4
-num_of_samples = img_data.shape[0]
-labels = np.ones((num_of_samples,),dtype='int64')
-num_img_each_list=[i for i in range(200,1200,100)] # 2
+num_img_each_total=1100
+num_img_each_list=[i for i in range(200,500,100)] # 2
 for num_img_each in num_img_each_list:
+
+    num_of_samples = num_img_each*num_classes
+    labels = np.ones((num_of_samples,),dtype='int64')
+    X1=img_data[0:num_img_each,]
+    X2=img_data[num_img_each_total:num_img_each_total+num_img_each]
+    X3=img_data[num_img_each_total*2:num_img_each_total*2+num_img_each]
+    X4=img_data[num_img_each_total*3:num_img_each_total*3+num_img_each]
+    X=np.concatenate((X1,X2,X3,X4),axis=0)
 
     labels[0:num_img_each]=0
     labels[num_img_each:num_img_each*2]=1
@@ -72,7 +79,7 @@ for num_img_each in num_img_each_list:
     # convert class labels to on-hot encoding
     Y = np_utils.to_categorical(labels, num_classes)
     #Shuffle the dataset
-    x,y = shuffle(img_data,Y, random_state=2)
+    x,y = shuffle(X,Y, random_state=2)
     # Split the dataset
     X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_state=2)
 
