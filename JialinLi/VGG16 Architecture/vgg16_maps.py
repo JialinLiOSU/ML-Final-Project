@@ -92,7 +92,6 @@ print(custom_vgg_model.layers[3].trainable)
 
 custom_vgg_model.compile(loss='categorical_crossentropy',optimizer='rmsprop',metrics=['accuracy'])
 
-
 t=time.time()
 #	t = now()
 hist = custom_vgg_model.fit(X_train, y_train, batch_size=32, epochs=12, verbose=1, validation_data=(X_test, y_test))
@@ -100,5 +99,3 @@ print('Training time: %s' % (t - time.time()))
 (loss, accuracy) = custom_vgg_model.evaluate(X_test, y_test, batch_size=10, verbose=1)
 
 print("[INFO] loss={:.4f}, accuracy: {:.4f}%".format(loss,accuracy * 100))
-
-
