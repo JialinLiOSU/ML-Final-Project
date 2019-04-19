@@ -29,7 +29,7 @@ data_path = 'C:/Users/li.7957/Desktop/Images for training/maps for classificatio
 data_dir_list = os.listdir(data_path)
 
 img_data_list=[]
-
+count=1
 for dataset in data_dir_list:
 	img_list=os.listdir(data_path+'/'+ dataset)
 	print ('Loaded the images of dataset-'+'{}\n'.format(dataset))
@@ -39,7 +39,7 @@ for dataset in data_dir_list:
 		x = image.img_to_array(img)
 		x = np.expand_dims(x, axis=0)
 		x = preprocess_input(x)
-#		x = x/255
+		# x = x/255
 		print('Input image shape:', x.shape)
 		img_data_list.append(x)
 
