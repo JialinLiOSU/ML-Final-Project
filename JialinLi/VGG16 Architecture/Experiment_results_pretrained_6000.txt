@@ -1,0 +1,325 @@
+num_img_each: 100
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=4.4325, accuracy: 72.5000%
+Training time: 46.65473699569702
+num_img_each: 100
+layer_inx: -4
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8871, accuracy: 26.2500%
+Training time: 39.99629020690918
+num_img_each: 100
+layer_inx: -5
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0000, accuracy: 100.0000%
+Training time: 40.21833157539368
+num_img_each: 100
+layer_inx: -6
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8871, accuracy: 26.2500%
+Training time: 41.901106119155884
+num_img_each: 100
+layer_inx: -7
+Batch_size: 32 epochs: 20
+[INFO] loss=12.6930, accuracy: 21.2500%
+Training time: 43.51701593399048
+num_img_each: 100
+layer_inx: -8
+Batch_size: 32 epochs: 20
+[INFO] loss=12.6930, accuracy: 21.2500%
+Training time: 45.14368438720703
+num_img_each: 100
+layer_inx: -9
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8871, accuracy: 26.2500%
+Training time: 45.29948878288269
+num_img_each: 100
+layer_inx: -10
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8871, accuracy: 26.2500%
+Training time: 48.8390166759491
+num_img_each: 300
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0557, accuracy: 99.5833%
+Training time: 125.31392574310303
+num_img_each: 300
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=4.2982, accuracy: 73.3333%
+Training time: 118.30400967597961
+num_img_each: 300
+layer_inx: -4
+Batch_size: 32 epochs: 20
+[INFO] loss=3.8286, accuracy: 76.2500%
+Training time: 118.52135825157166
+num_img_each: 300
+layer_inx: -5
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0000, accuracy: 100.0000%
+Training time: 118.44488620758057
+num_img_each: 300
+layer_inx: -6
+Batch_size: 32 epochs: 20
+[INFO] loss=12.0214, accuracy: 25.4167%
+Training time: 122.48783016204834
+num_img_each: 300
+layer_inx: -7
+Batch_size: 32 epochs: 20
+[INFO] loss=12.3572, accuracy: 23.3333%
+Training time: 127.72990441322327
+num_img_each: 300
+layer_inx: -8
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8199, accuracy: 26.6667%
+Training time: 131.94725465774536
+num_img_each: 300
+layer_inx: -9
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8199, accuracy: 26.6667%
+Training time: 132.10460662841797
+num_img_each: 300
+layer_inx: -10
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8199, accuracy: 26.6667%
+Training time: 142.00591802597046
+num_img_each: 500
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=4.3519, accuracy: 73.0000%
+Training time: 204.8297815322876
+num_img_each: 500
+layer_inx: -4
+Batch_size: 32 epochs: 20
+[INFO] loss=3.7475, accuracy: 76.7500%
+Training time: 199.72081518173218
+num_img_each: 500
+layer_inx: -5
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0800, accuracy: 99.5000%
+Training time: 199.89754629135132
+num_img_each: 500
+layer_inx: -6
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8065, accuracy: 26.7500%
+Training time: 206.2667751312256
+num_img_each: 500
+layer_inx: -7
+Batch_size: 32 epochs: 20
+[INFO] loss=11.7259, accuracy: 27.2500%
+Training time: 211.5710530281067
+num_img_each: 500
+layer_inx: -8
+Batch_size: 32 epochs: 20
+[INFO] loss=11.7259, accuracy: 27.2500%
+Training time: 219.30447506904602
+num_img_each: 500
+layer_inx: -9
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8065, accuracy: 26.7500%
+Training time: 219.26334047317505
+num_img_each: 500
+layer_inx: -10
+Batch_size: 32 epochs: 20
+[INFO] loss=12.4109, accuracy: 23.0000%
+Training time: 235.5135715007782
+num_img_each: 700
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=11.7432, accuracy: 27.1429%
+Training time: 284.5419511795044
+num_img_each: 700
+layer_inx: -4
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0576, accuracy: 99.6429%
+Training time: 279.57454466819763
+num_img_each: 700
+layer_inx: -5
+Batch_size: 32 epochs: 20
+[INFO] loss=7.9439, accuracy: 50.7143%
+Training time: 279.6120002269745
+num_img_each: 700
+layer_inx: -6
+Batch_size: 32 epochs: 20
+[INFO] loss=11.7432, accuracy: 27.1429%
+Training time: 288.3459544181824
+num_img_each: 700
+layer_inx: -7
+Batch_size: 32 epochs: 20
+[INFO] loss=11.7432, accuracy: 27.1429%
+Training time: 299.06008529663086
+num_img_each: 700
+layer_inx: -8
+Batch_size: 32 epochs: 20
+[INFO] loss=11.7432, accuracy: 27.1429%
+Training time: 309.5704324245453
+num_img_each: 700
+layer_inx: -9
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2613, accuracy: 23.9286%
+Training time: 309.94328212738037
+num_img_each: 700
+layer_inx: -10
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2613, accuracy: 23.9286%
+Training time: 331.2626359462738
+num_img_each: 900
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0918, accuracy: 99.3056%
+Training time: 355.0143392086029
+num_img_each: 900
+layer_inx: -4
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0937, accuracy: 99.3056%
+Training time: 351.8573508262634
+num_img_each: 900
+layer_inx: -5
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0334, accuracy: 99.5833%
+Training time: 351.1714141368866
+num_img_each: 900
+layer_inx: -6
+Batch_size: 32 epochs: 20
+[INFO] loss=12.0662, accuracy: 25.1389%
+Training time: 364.10695338249207
+num_img_each: 900
+layer_inx: -7
+Batch_size: 32 epochs: 20
+[INFO] loss=12.3572, accuracy: 23.3333%
+Training time: 377.0802175998688
+num_img_each: 900
+layer_inx: -8
+Batch_size: 32 epochs: 20
+[INFO] loss=12.0662, accuracy: 25.1389%
+Training time: 391.32673621177673
+num_img_each: 900
+layer_inx: -9
+Batch_size: 32 epochs: 20
+[INFO] loss=11.9766, accuracy: 25.6944%
+Training time: 393.2142333984375
+num_img_each: 900
+layer_inx: -10
+Batch_size: 32 epochs: 20
+[INFO] loss=12.3572, accuracy: 23.3333%
+Training time: 420.3218369483948
+num_img_each: 1100
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=12.0336, accuracy: 25.3409%
+Training time: 439.66184997558594
+num_img_each: 1100
+layer_inx: -4
+Batch_size: 32 epochs: 20
+[INFO] loss=0.0988, accuracy: 99.3182%
+Training time: 454.8689913749695
+num_img_each: 1100
+layer_inx: -5
+Batch_size: 32 epochs: 20
+[INFO] loss=12.0336, accuracy: 25.3409%
+Training time: 454.90321254730225
+num_img_each: 1100
+layer_inx: -6
+Batch_size: 32 epochs: 20
+[INFO] loss=12.1618, accuracy: 24.5455%
+Training time: 472.47165870666504
+num_img_each: 1100
+layer_inx: -7
+Batch_size: 32 epochs: 20
+[INFO] loss=12.0336, accuracy: 25.3409%
+Training time: 464.87505531311035
+num_img_each: 1100
+layer_inx: -8
+Batch_size: 32 epochs: 20
+[INFO] loss=12.1618, accuracy: 24.5455%
+Training time: 482.69894528388977
+num_img_each: 1100
+layer_inx: -9
+Batch_size: 32 epochs: 20
+[INFO] loss=12.0336, accuracy: 25.3409%
+Training time: 481.44406390190125
+num_img_each: 1100
+layer_inx: -10
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2168, accuracy: 24.2045%
+Training time: 515.0560004711151
+num_img_each: 1300
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=4.5260, accuracy: 71.8269%
+Training time: 566.3939921855927
+num_img_each: 1300
+layer_inx: -4
+Batch_size: 32 epochs: 20
+[INFO] loss=0.3257, accuracy: 97.8846%
+Training time: 560.963700056076
+num_img_each: 1300
+layer_inx: -5
+Batch_size: 32 epochs: 20
+[INFO] loss=4.4790, accuracy: 72.2115%
+Training time: 561.2905924320221
+num_img_each: 1300
+layer_inx: -6
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2900, accuracy: 23.7500%
+Training time: 577.8573257923126
+num_img_each: 1300
+layer_inx: -7
+Batch_size: 32 epochs: 20
+[INFO] loss=11.9336, accuracy: 25.9615%
+Training time: 605.0743741989136
+num_img_each: 1300
+layer_inx: -8
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2436, accuracy: 24.0385%
+Training time: 601.6984007358551
+num_img_each: 1300
+layer_inx: -9
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2900, accuracy: 23.7500%
+Training time: 604.7852711677551
+num_img_each: 1300
+layer_inx: -10
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2436, accuracy: 24.0385%
+Training time: 643.591296672821
+num_img_each: 1500
+layer_inx: -3
+Batch_size: 32 epochs: 20
+[INFO] loss=4.4728, accuracy: 72.2500%
+Training time: 626.762793302536
+num_img_each: 1500
+layer_inx: -4
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8065, accuracy: 26.7500%
+Training time: 619.2065398693085
+num_img_each: 1500
+layer_inx: -5
+Batch_size: 32 epochs: 20
+[INFO] loss=4.1638, accuracy: 74.1667%
+Training time: 619.2944617271423
+num_img_each: 1500
+layer_inx: -6
+Batch_size: 32 epochs: 20
+[INFO] loss=12.1960, accuracy: 24.3333%
+Training time: 640.3855593204498
+num_img_each: 1500
+layer_inx: -7
+Batch_size: 32 epochs: 20
+[INFO] loss=11.8065, accuracy: 26.7500%
+Training time: 666.243569612503
+num_img_each: 1500
+layer_inx: -8
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2095, accuracy: 24.2500%
+Training time: 696.7552845478058
+num_img_each: 1500
+layer_inx: -9
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2095, accuracy: 24.2500%
+Training time: 697.2885625362396
+num_img_each: 1500
+layer_inx: -10
+Batch_size: 32 epochs: 20
+[INFO] loss=12.2095, accuracy: 24.2500%
+Training time: 743.4212694168091
