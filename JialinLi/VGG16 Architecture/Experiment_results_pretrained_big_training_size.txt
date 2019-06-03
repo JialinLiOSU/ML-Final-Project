@@ -1,0 +1,60 @@
+Batch_size: 32 epochs: 100
+[INFO] loss=13.2974, accuracy: 17.5000%
+Training time: 11731.797337770462
+Batch_size: 32 epochs: 100
+[INFO] loss=0.0000, accuracy: 100.0000%
+Training time: 11741.07460641861
+Batch_size: 32 epochs: 100
+[INFO] loss=4.4325, accuracy: 72.5000%
+Training time: 11729.546432256699
+Batch_size: 32 epochs: 100
+[INFO] loss=13.2974, accuracy: 17.5000%
+Training time: 12132.255298614502
+Batch_size: 32 epochs: 100
+[INFO] loss=11.6856, accuracy: 27.5000%
+Training time: 12841.793273925781
+Batch_size: 32 epochs: 100
+[INFO] loss=13.2974, accuracy: 17.5000%
+Training time: 13561.351957798004
+Batch_size: 32 epochs: 100
+[INFO] loss=11.6856, accuracy: 27.5000%
+Training time: 13551.081822395325
+Batch_size: 32 epochs: 100
+[INFO] loss=11.6856, accuracy: 27.5000%
+Training time: 15258.054946660995
+Batch_size: 32 epochs: 100
+[INFO] loss=3.2236, accuracy: 80.0000%
+Training time: 17582.16794705391
+Batch_size: 32 epochs: 100
+[INFO] loss=11.9543, accuracy: 25.8333%
+Training time: 17585.903607845306
+Batch_size: 32 epochs: 100
+[INFO] loss=0.0000, accuracy: 100.0000%
+Training time: 17578.515213251114
+Batch_size: 32 epochs: 100
+[INFO] loss=12.0886, accuracy: 25.0000%
+Training time: 18168.778970718384
+Batch_size: 32 epochs: 100
+[INFO] loss=11.4170, accuracy: 29.1667%
+Training time: 19266.67926478386
+Batch_size: 32 epochs: 100
+[INFO] loss=11.4170, accuracy: 29.1667%
+Training time: 20296.36044239998
+Batch_size: 32 epochs: 100
+[INFO] loss=11.9543, accuracy: 25.8333%
+Training time: 20311.64810538292
+Batch_size: 32 epochs: 100
+[INFO] loss=12.8945, accuracy: 20.0000%
+Training time: 22888.37344431877
+Batch_size: 32 epochs: 100
+[INFO] loss=4.7003, accuracy: 70.0000%
+Training time: 23412.61133956909
+Batch_size: 32 epochs: 100
+[INFO] loss=9.2679, accuracy: 42.5000%
+Training time: 23459.190713644028
+Batch_size: 32 epochs: 100
+[INFO] loss=0.2418, accuracy: 98.1250%
+Training time: 23878.74025130272
+Batch_size: 32 epochs: 100
+[INFO] loss=12.1893, accuracy: 24.3750%
+Training time: 24400.325352668762
